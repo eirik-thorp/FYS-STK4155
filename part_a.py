@@ -10,9 +10,6 @@ from matplotlib.ticker import MaxNLocator
 
 from functions import FrankeFunction, OLS, predict, bootstrap, Ridge, Lasso
 
-#Part a = Generated data set
-#Part b = terrain data
-
 np.random.seed(42)
 
 #number of data points
