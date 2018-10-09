@@ -6,6 +6,12 @@ from matplotlib import cm
 
 from functions import OLS, predict, Ridge, Lasso, bootstrap
 
+'''
+Analysis of the digital terrain data
+
+'''
+
+
 #Read data and create terrain patch
 
 terrain1 = imread('hawaii.tif')
@@ -26,7 +32,6 @@ x = C.reshape(-1,1)
 y = R.reshape(-1,1)
 
 #Plot terrain patch
-
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 surf = ax.plot_surface(C,R,patch,cmap=cm.viridis,linewidth=0)
@@ -38,14 +43,13 @@ fig.colorbar(surf, shrink=0.35, aspect=10)
 plt.show()
 plt.show()
 
-#Fit OLS, Ridge or Lasso
-
+#Fit OLS, Ridge or Lasso, predict training data
 x1 = x.ravel()
 y1 = y.ravel()
 z1 = patch.ravel()
 
 degrees = 5
-beta = OLS(x1, y1, z1, degrees)
+beta = OLS(x1, y1, z1, degrees) #Change to Lasso or Ridge
 z_ = predict(x1, y1, beta, degrees)
 
 '''
@@ -74,7 +78,8 @@ plt.show()
 '''
 
 '''
-Bootstrap
+#Bootstrap, with OLS used as default
+#Can be changed to Ridge or Lasso in the functions.py file
 
 error, R2, bias, variance = bootstrap(x1, y1, z1,degree=degrees)
 print('Error:', error)
@@ -98,11 +103,10 @@ fig.colorbar(surf, shrink=0.35, aspect=10)
 plt.show()
 
 #Check MSE and R2 score
-
 z_ = z_.ravel()
 
 mse = np.mean( (z_ - z1)**2 )
 R2 = 1 - np.sum( (z_ - z1)**2 )/np.sum( (z1- np.mean(z1))**2 )
 
-print('mse:', mse)
-print('R2:', R2)
+#print('mse:', mse)
+#print('R2:', R2)
