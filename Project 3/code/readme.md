@@ -3,6 +3,6 @@ The file data_preprocessing.py contains the code which creates a data matrix fro
 
 The file classification.py performs the classification using logistic regression, support vector machines and the multi-layer perceptron.
 
-The file pca.py contains the class pca, which performs dimensioality reduction using principal component analysis.
+The file pca.py contains the class pca, which performs dimensionality reduction using principal component analysis.
 
-The files mlp.py and functions.py are re-used from project 1 and contain the multi-layer perceptron class and some functions for plotting the data.
+The files mlp.py and functions.py are re-used from the previous projects and contain the multi-layer perceptron class and some functions for plotting the data.
